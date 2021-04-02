@@ -53,7 +53,7 @@ const EditProduct = () => {
   };
 
   return (
-    <div className="d-flex">
+    <div className="row d-flex g-0">
       <div className="col-md-3 bg-dark text-light" style={{ height: "100vh" }}>
         <div className="p-3 text-center">
           <h2>UNIQUE SHOP BD</h2>
@@ -96,7 +96,7 @@ const EditProduct = () => {
 
       <div className="col-md-9">
         <div className="col-md-12 bg-light">
-          <h5 className="p-3 fs-3">Add Product</h5>
+          <h5 className="p-3 fs-3">Edit Product</h5>
         </div>
         <div className="card m-3 p-3 border-0 shadow">
           <form className="form p-3" onSubmit={handleSubmit}>

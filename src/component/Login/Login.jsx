@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../App";
 import {
-  fireAuth,
   googleSignIn,
   initializeAppfirebase,
   signInWithEmailAndPassword,
@@ -12,9 +11,12 @@ import {
 initializeAppfirebase();
 
 const Login = () => {
-  const [setLoggedInUserInfo, isLoggedIn, setIsLoggedIn] = useContext(
-    UserContext
-  );
+  const [
+    LoggedInUserInfo,
+    setLoggedInUserInfo,
+    isLoggedIn,
+    setIsLoggedIn,
+  ] = useContext(UserContext);
 
   const [logInError, setLogInError] = useState("");
 
@@ -27,21 +29,6 @@ const Login = () => {
   const history = useHistory();
   const location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
-
-  if (!isLoggedIn) {
-    fireAuth.onAuthStateChanged((userAuth) => {
-      if (userAuth) {
-        console.log(userAuth);
-        setLoggedInUserInfo(userAuth);
-        setIsLoggedIn(true);
-        history.replace(from);
-      } else {
-        console.log("userAuth");
-        setLoggedInUserInfo({});
-        setIsLoggedIn(false);
-      }
-    });
-  }
 
   const updateInputUserInfo = (name, value) => {
     const newInputUserInfo = { ...inputUserInfo };
@@ -144,15 +131,17 @@ const Login = () => {
 
   const signInWithGoogle = () => {
     googleSignIn().then((res) => {
-      console.log(res);
+      handleResponse(res, res.success);
     });
   };
 
   const handleResponse = (res, success) => {
     if (success) {
       console.log(res);
-      setLoggedInUserInfo(res);
+
       setLogInError("");
+      setLoggedInUserInfo(res);
+      setIsLoggedIn(true);
       history.replace(from);
     } else {
       console.log(res.error);

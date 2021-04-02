@@ -28,21 +28,21 @@ const Order = () => {
     <div className="container">
       <h2>Your Orders</h2>
       {products?.map((product, i) => (
-        <div className="card border-0 mb-3 shadow" key={i}>
-          <div className="d-flex justify-content-between align-items-center p-3 m-3">
-            <div>
+        <div className="card border-0 mb-3 shadow text-center" key={i}>
+          <div className="row d-flex justify-content-between align-items-center p-3 m-3">
+            <div className="col-md-2">
               <img style={{ width: "75px" }} src={product.image} alt="" />
             </div>
-            <div>
+            <div className="col-md-3">
               <p>{product.product}</p>
             </div>
-            <div>
+            <div className="col-md-2">
               <p>Qty: {product.quantity}</p>
             </div>
-            <div>
+            <div className="col-md-3">
               <p>Placed on: {product.date}</p>
             </div>
-            <div>
+            <div className="col-md-2">
               <p>
                 <span class="badge bg-primary">{product.status}</span>
               </p>

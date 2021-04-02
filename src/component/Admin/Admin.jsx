@@ -31,7 +31,7 @@ const Admin = () => {
   };
 
   return (
-    <div className="d-flex">
+    <div className="row d-flex g-0">
       <div
         className="col-md-3 bg-dark text-light"
         style={{ minHeight: "100vh" }}
@@ -78,7 +78,7 @@ const Admin = () => {
         <div className="col-md-12 bg-light">
           <h5 className="p-3 fs-3">Manage Product</h5>
         </div>
-        <div className="card m-3 p-3 border-0 shadow">
+        <div className="card m-3 p-3 border-0 shadow table-responsive">
           <table className="table">
             <thead>
               <tr>
@@ -86,7 +86,7 @@ const Admin = () => {
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Price</th>
-                <th>Action</th>
+                <th>#</th>
               </tr>
             </thead>
             <tbody>
@@ -99,15 +99,15 @@ const Admin = () => {
                     <td>{product.name}</td>
                     <td>{product.gender}</td>
                     <td>{product.price}</td>
-                    <td>
+                    <td className="text-center">
                       <Link
-                        className="btn btn-primary btn-sm me-3"
+                        className="btn btn-primary btn-sm m-1"
                         to={`/product/edit/${product._id}`}
                       >
                         <i className="fa fa-edit"></i>
                       </Link>
                       <button
-                        className="btn btn-danger btn-sm"
+                        className="btn btn-danger btn-sm m-1"
                         onClick={() => deleteProduct(product._id)}
                       >
                         <i className="fa fa-trash"></i>

@@ -35,7 +35,13 @@ function App() {
 
   return (
     <UserContext.Provider
-      value={[LoggedInUserInfo, setLoggedInUserInfo, isLoggedIn, setIsLoggedIn]}
+      value={[
+        LoggedInUserInfo,
+        setLoggedInUserInfo,
+        isLoggedIn,
+        setIsLoggedIn,
+        setPageLoading,
+      ]}
     >
       <Router>
         {pageLoading ? (

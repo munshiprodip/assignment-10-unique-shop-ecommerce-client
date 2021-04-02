@@ -21,7 +21,7 @@ const SearchForm = () => {
             type="button"
             id="button-addon2"
           >
-            Button
+            Search
           </button>
         </div>
       </form>
